@@ -260,7 +260,7 @@ export default function Page() {
         )}
 
         <main className="flex-1">
-          <section id="home" className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+          <section id="home" className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-muted">
             <div className="container px-4 md:px-6">
               <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
                 <div className="flex flex-col justify-center space-y-4">
@@ -295,7 +295,7 @@ export default function Page() {
             </div>
           </section>
 
-          <section id="impact" className="w-full py-12 md:py-24 lg:py-32 bg-background">
+          <section id="impact" className="w-full py-12 md:py-24 lg:py-32 bg-background bg-muted">
       <div className="container px-4 md:px-6">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">Our Impact</h2>
         <Tabs defaultValue="grid" className="w-full">
@@ -350,7 +350,7 @@ export default function Page() {
       </div>
     </section>
 
-          <section id="predict" className="w-full py-12 md:py-24 lg:py-32">
+          <section id="predict" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
             <div className="container px-4 md:px-6">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">Predict Crop Yield</h2>
               <div className="max-w-lg mx-auto bg-card shadow-lg rounded-lg p-8">
@@ -437,7 +437,7 @@ export default function Page() {
           </section>
 
           {showResults && (
-            <section id="results" ref={resultsRef} className="w-full py-12 md:py-24 lg:py-32 bg-background">
+            <section id="results" ref={resultsRef} className="w-full py-12 md:py-24 lg:py-32 bg-background bg-muted">
               <div className="container px-4 md:px-6">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">Yield Results</h2>
                 <div className="max-w-4xl mx-auto">
@@ -500,7 +500,7 @@ export default function Page() {
             </section>
           )}
 
-          <section id="about" className="w-full py-12 md:py-24 lg:py-32">
+          <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
             <div className="container px-4 md:px-6">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">About EcoShield</h2>
               <div className="grid gap-10 lg:grid-cols-2">
@@ -555,7 +555,7 @@ export default function Page() {
             </div>
           </section>
           
-          <section id="contact" className="h-screen flex items-center justify-center py-12 md:py-24 lg:py-32">
+          <section id="contact" className="h-screen flex items-center justify-center py-12 md:py-24 lg:py-32 bg-muted">
             <div className="container px-4 md:px-6">
               <div className="grid lg:grid-cols-2 gap-4">
                 <div className="flex flex-col justify-center">
