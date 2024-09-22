@@ -128,36 +128,36 @@ export default function Page() {
     setIsLoading(true);
 
     if (isNaN(formData.avg_temp)) {
-        alert('Please enter a valid numeric value for average temperature');
-        setIsLoading(false);
-        return;
+      alert('Please enter a valid numeric value for average temperature');
+      setIsLoading(false);
+      return;
     }
 
     try {
       const res = await fetch('https://ecoshield.pythonanywhere.com/execute', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
 
       const data = await res.json();
       setYieldResult(data.prediction);
 
       const chartData = Object.entries(data.prediction).map(([model, prediction]) => ({
-          model,
-          yield: prediction.yield,
-          category: prediction.category,
+        model,
+        yield: prediction.yield,
+        category: prediction.category,
       }));
 
       setChartData(chartData);
       setShowResults(true);
 
       setTimeout(() => {
-          if (resultsRef.current) {
-              resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+        if (resultsRef.current) {
+          resultsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }, 100);
     } catch (error) {
       console.error('Error:', error);
@@ -213,6 +213,13 @@ export default function Page() {
             <nav className="hidden md:flex mx-4 items-center space-x-6 text-sm font-medium">
               <NavLink href="#home" section="home">Home</NavLink>
               <NavLink href="#impact" section="impact">Our Impact</NavLink>
+              <NavLink
+                href="https://danthewanderer.blogspot.com/2024/09/eco-shield-bridging-technology-and.html"
+                section="blog"
+                onClick={() => window.open("https://danthewanderer.blogspot.com/2024/09/eco-shield-bridging-technology-and.html", "_blank")}
+              >
+                Blog
+              </NavLink>
               <NavLink href="#about" section="about">About</NavLink>
               <NavLink href="#contact" section="contact">Contact</NavLink>
             </nav>
@@ -221,10 +228,10 @@ export default function Page() {
                 <Menu className="h-6 w-6" />
               </Button>
             </div>
-            <Button 
+            <Button
               className="hidden md:inline-flex mx-4 items-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 ml-auto"
-              onClick={(e) => { 
-                e.preventDefault(); 
+              onClick={(e) => {
+                e.preventDefault();
                 scrollToSection('predict');
               }}
             >
@@ -237,6 +244,13 @@ export default function Page() {
               <nav className="flex flex-col space-y-4 p-4">
                 <NavLink href="#home" section="home">Home</NavLink>
                 <NavLink href="#impact" section="impact">Our Impact</NavLink>
+                <NavLink
+                  href="https://danthewanderer.blogspot.com/2024/09/eco-shield-bridging-technology-and.html"
+                  section="blog"
+                  onClick={() => window.open("https://danthewanderer.blogspot.com/2024/09/eco-shield-bridging-technology-and.html", "_blank")}
+                >
+                  Blog
+                </NavLink>
                 <NavLink href="#about" section="about">About</NavLink>
                 <NavLink href="#contact" section="contact">Contact</NavLink>
               </nav>
@@ -251,6 +265,13 @@ export default function Page() {
                 <NavLink href="#home" section="home">Home</NavLink>
                 <NavLink href="#impact" section="impact">Our Impact</NavLink>
                 <NavLink href="#predict" section="predict">Predict Yield</NavLink>
+                <NavLink
+                  href="https://danthewanderer.blogspot.com/2024/09/eco-shield-bridging-technology-and.html"
+                  section="blog"
+                  onClick={() => window.open("https://danthewanderer.blogspot.com/2024/09/eco-shield-bridging-technology-and.html", "_blank")}
+                >
+                  Blog
+                </NavLink>
                 <NavLink href="#about" section="about">About</NavLink>
                 <NavLink href="#contact" section="contact">Contact</NavLink>
               </nav>
@@ -260,7 +281,7 @@ export default function Page() {
         )}
 
         <main className="flex-1">
-          <section id="home" className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-muted">
+          <section id="home" className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
             <div className="container px-4 md:px-6">
               <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
                 <div className="flex flex-col justify-center space-y-4">
@@ -295,62 +316,62 @@ export default function Page() {
             </div>
           </section>
 
-          <section id="impact" className="w-full py-12 md:py-24 lg:py-32 bg-background bg-muted">
-      <div className="container px-4 md:px-6">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">Our Impact</h2>
-        <Tabs defaultValue="grid" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="grid">Grid View</TabsTrigger>
-            <TabsTrigger value="full">Full View</TabsTrigger>
-          </TabsList>
-          <TabsContent value="grid">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {impactData.map((item, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <CardHeader className="p-4">
-                    <CardTitle className="text-lg">{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-0">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={300}
-                      height={200}
-                      layout="responsive"
-                      className="object-cover"
-                    />
-                  </CardContent>
-                </Card>
-              ))}
+          <section id="impact" className="w-full py-12 md:py-24 lg:py-32 bg-background">
+            <div className="container px-4 md:px-6">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">Our Impact</h2>
+              <Tabs defaultValue="grid" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 mb-8">
+                  <TabsTrigger value="grid">Grid View</TabsTrigger>
+                  <TabsTrigger value="full">Full View</TabsTrigger>
+                </TabsList>
+                <TabsContent value="grid">
+                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                    {impactData.map((item, index) => (
+                      <Card key={index} className="overflow-hidden">
+                        <CardHeader className="p-4">
+                          <CardTitle className="text-lg">{item.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="p-0">
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            width={300}
+                            height={200}
+                            layout="responsive"
+                            className="object-cover"
+                          />
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </TabsContent>
+                <TabsContent value="full">
+                  {impactData.map((item, index) => (
+                    <Card key={index} className="mb-6 overflow-hidden">
+                      <div className="md:flex">
+                        <div className="md:w-1/2">
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            width={600}
+                            height={400}
+                            layout="responsive"
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="p-6 md:w-1/2">
+                          <CardTitle className="text-2xl mb-4">{item.title}</CardTitle>
+                          <p className="text-muted-foreground">{item.description}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </TabsContent>
+              </Tabs>
             </div>
-          </TabsContent>
-          <TabsContent value="full">
-            {impactData.map((item, index) => (
-              <Card key={index} className="mb-6 overflow-hidden">
-                <div className="md:flex">
-                  <div className="md:w-1/2">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={600}
-                      height={400}
-                      layout="responsive"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-6 md:w-1/2">
-                    <CardTitle className="text-2xl mb-4">{item.title}</CardTitle>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </TabsContent>
-        </Tabs>
-      </div>
-    </section>
+          </section>
 
-          <section id="predict" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+          <section id="predict" className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">Predict Crop Yield</h2>
               <div className="max-w-lg mx-auto bg-card shadow-lg rounded-lg p-8">
@@ -437,7 +458,7 @@ export default function Page() {
           </section>
 
           {showResults && (
-            <section id="results" ref={resultsRef} className="w-full py-12 md:py-24 lg:py-32 bg-background bg-muted">
+            <section id="results" ref={resultsRef} className="w-full py-12 md:py-24 lg:py-32 bg-background">
               <div className="container px-4 md:px-6">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">Yield Results</h2>
                 <div className="max-w-4xl mx-auto">
@@ -500,7 +521,7 @@ export default function Page() {
             </section>
           )}
 
-          <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+          <section id="about" className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">About EcoShield</h2>
               <div className="grid gap-10 lg:grid-cols-2">
@@ -554,8 +575,8 @@ export default function Page() {
               </div>
             </div>
           </section>
-          
-          <section id="contact" className="h-screen flex items-center justify-center py-12 md:py-24 lg:py-32 bg-muted">
+
+          <section id="contact" className="h-screen flex items-center justify-center py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
               <div className="grid lg:grid-cols-2 gap-4">
                 <div className="flex flex-col justify-center">
