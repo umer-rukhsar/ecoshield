@@ -622,7 +622,7 @@ export default function Page() {
                   <div className="space-y-4">
                     <div className="flex items-center space-x-2">
                       <Phone className="h-5 w-5 text-muted-foreground" />
-                      <span>+1 (555) 123-4567</span>
+                      <span>+92 345-4567890</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Mail className="h-5 w-5 text-muted-foreground" />
