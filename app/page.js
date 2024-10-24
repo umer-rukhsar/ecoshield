@@ -9,6 +9,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 import { useTheme } from 'next-themes'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import {
   Card,
   CardContent,
@@ -378,25 +379,59 @@ export default function Page() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <Label htmlFor="Area">Area</Label>
-                    <Input
-                      id="Area"
-                      type="text"
+                    <Select
+                      onValueChange={(value) => setFormData({ ...formData, Area: value })}
                       value={formData.Area}
-                      onChange={(e) => setFormData({ ...formData, Area: e.target.value })}
-                      placeholder="Enter area"
-                      required
-                    />
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Enter area" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {[
+                          'Albania', 'Algeria', 'Angola', 'Argentina', 'Armenia', 'Australia', 'Austria',
+                          'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Belarus', 'Belgium', 'Botswana',
+                          'Brazil', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cameroon', 'Canada',
+                          'Central African Republic', 'Chile', 'Colombia', 'Croatia', 'Denmark',
+                          'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Eritrea', 'Estonia',
+                          'Finland', 'France', 'Germany', 'Ghana', 'Greece', 'Guatemala', 'Guinea', 'Guyana',
+                          'Haiti', 'Honduras', 'Hungary', 'India', 'Indonesia', 'Iraq', 'Ireland', 'Italy',
+                          'Jamaica', 'Japan', 'Kazakhstan', 'Kenya', 'Latvia', 'Lebanon', 'Lesotho',
+                          'Libya', 'Lithuania', 'Madagascar', 'Malawi', 'Malaysia', 'Mali', 'Mauritania',
+                          'Mauritius', 'Mexico', 'Montenegro', 'Morocco', 'Mozambique', 'Namibia', 'Nepal',
+                          'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Norway', 'Pakistan',
+                          'Papua New Guinea', 'Peru', 'Poland', 'Portugal', 'Qatar', 'Romania', 'Rwanda',
+                          'Saudi Arabia', 'Senegal', 'Slovenia', 'South Africa', 'Spain', 'Sri Lanka',
+                          'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Tajikistan', 'Thailand',
+                          'Tunisia', 'Turkey', 'Uganda', 'Ukraine', 'United Kingdom', 'Uruguay',
+                          'Zambia', 'Zimbabwe'
+                        ].map((country) => (
+                          <SelectItem key={country} value={country}>
+                            {country}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div>
                     <Label htmlFor="Item">Item</Label>
-                    <Input
-                      id="Item"
-                      type="text"
+                    <Select
+                      onValueChange={(value) => setFormData({ ...formData, Item: value })}
                       value={formData.Item}
-                      onChange={(e) => setFormData({ ...formData, Item: e.target.value })}
-                      placeholder="Enter item (e.g., crop)"
-                      required
-                    />
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Enter item (e.g.,crop)" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {[
+                          'Maize', 'Potatoes', 'Rice, paddy', 'Sorghum', 'Soybeans', 'Wheat',
+                          'Cassava', 'Sweet potatoes', 'Plantains and others', 'Yams'
+                        ].map((item) => (
+                          <SelectItem key={item} value={item}>
+                            {item}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div>
                     <Label htmlFor="Year">Year</Label>
